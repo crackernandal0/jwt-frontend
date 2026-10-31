@@ -1,0 +1,22 @@
+body { font-family: system-ui, sans-serif; max-width: 960px; margin: 0 auto; padding: 0 16px 40px; color: #222; }
+header { display: flex; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid #ddd; margin-bottom: 16px; }
+header #who { margin-left: auto; color: #555; }
+.hidden { display: none !important; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+form { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+form.inline { flex-direction: row; flex-wrap: wrap; }
+form.inline input { flex: 1; min-width: 180px; }
+input, textarea, select, button { font: inherit; padding: 6px 8px; }
+button { cursor: pointer; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+nav button.active { background: #222; color: #fff; }
+.card { border: 1px solid #ddd; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; }
+.card h4 { margin: 0 0 4px; }
+.card p { margin: 4px 0; white-space: pre-wrap; }
+.muted { color: #777; font-size: 0.9em; }
+.pager { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+table { width: 100%; border-collapse: collapse; overflow-x: auto; display: block; }
+th, td { text-align: left; padding: 6px; border-bottom: 1px solid #eee; }
+#msg { padding: 8px 12px; border-radius: 4px; background: #eef6ee; }
+#msg.error { background: #fbeaea; color: #900; }
+a { cursor: pointer; color: #0645ad; }

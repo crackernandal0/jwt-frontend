@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secure Notes</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <strong>Secure Notes</strong>
+    <span id="who"></span>
+    <button id="logout" class="hidden">Log out</button>
+  </header>
+
+  <p id="msg" class="hidden"></p>
+
+  <section id="auth">
+    <div class="cols">
+      <form id="loginForm">
+        <h3>Log in</h3>
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="password" type="password" placeholder="Password" required />
+        <button>Log in</button>
+      </form>
+      <form id="registerForm">
+        <h3>Register</h3>
+        <input name="name" placeholder="Name" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="password" type="password" placeholder="Password (min 8)" minlength="8" required />
+        <input name="interests" placeholder="Interests, comma separated (e.g. chess, reading)" />
+        <button>Create account</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="main" class="hidden">
+    <nav id="tabs">
+      <button data-tab="notes">My notes</button>
+      <button data-tab="posts">Posts</button>
+      <button data-tab="interests">Interests</button>
+      <button data-tab="profile">Profile</button>
+      <button data-tab="adminUsers" class="admin">Admin: users</button>
+      <button data-tab="adminNotes" class="admin">Admin: all notes</button>
+    </nav>
+
+    <div id="tab-notes" class="tab">
+      <form id="noteForm">
+        <h3 id="noteFormTitle">New note</h3>
+        <input type="hidden" name="editId" />
+        <input name="title" placeholder="Title" required maxlength="200" />
+        <textarea name="content" placeholder="Content" rows="3"></textarea>
+        <button>Save</button>
+        <button type="button" id="noteCancel" class="hidden">Cancel edit</button>
+      </form>
+      <div id="notesList"></div>
+      <div class="pager" id="notesPager"></div>
+    </div>
+
+    <div id="tab-posts" class="tab">
+      <form id="postForm">
+        <h3>Write a post (visible to everyone)</h3>
+        <input name="title" placeholder="Title" required maxlength="200" />
+        <textarea name="body" placeholder="Body" rows="3"></textarea>
+        <button>Publish</button>
+      </form>
+      <form id="postsLookupForm" class="inline">
+        <input name="userId" placeholder="User id" required />
+        <button>Show posts of user</button>
+        <button type="button" id="myPostsBtn">My posts</button>
+      </form>
+      <h3 id="postsHeading"></h3>
+      <div id="postsList"></div>
+      <div class="pager" id="postsPager"></div>
+    </div>
+
+    <div id="tab-interests" class="tab">
+      <form id="interestFilter" class="inline">
+        <input name="interest" placeholder="Filter by one interest (optional)" />
+        <button>Search</button>
+      </form>
+      <div id="interestsList"></div>
+      <div class="pager" id="interestsPager"></div>
+    </div>
+
+    <div id="tab-profile" class="tab">
+      <form id="profileForm">
+        <h3>My profile</h3>
+        <p id="profileInfo" class="muted"></p>
+        <input name="name" placeholder="Name" required />
+        <input name="interests" placeholder="Interests, comma separated" />
+        <input name="password" type="password" placeholder="New password (leave blank to keep)" minlength="8" />
+        <button>Save profile</button>
+      </form>
+    </div>
+
+    <div id="tab-adminUsers" class="tab">
+      <form id="userForm">
+        <h3 id="userFormTitle">Add user</h3>
+        <input type="hidden" name="editId" />
+        <input name="name" placeholder="Name" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="password" type="password" placeholder="Password (blank = keep when editing)" minlength="8" />
+        <select name="role"><option value="user">user</option><option value="admin">admin</option></select>
+        <input name="interests" placeholder="Interests, comma separated" />
+        <button>Save user</button>
+        <button type="button" id="userCancel" class="hidden">Cancel edit</button>
+      </form>
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Interests</th><th></th></tr></thead>
+        <tbody id="usersBody"></tbody>
+      </table>
+      <div class="pager" id="usersPager"></div>
+    </div>
+
+    <div id="tab-adminNotes" class="tab">
+      <form id="adminNotesFilter" class="inline">
+        <input name="owner" placeholder="Filter by owner user id (optional)" />
+        <button>Filter</button>
+      </form>
+      <div id="adminNotesList"></div>
+      <div class="pager" id="adminNotesPager"></div>
+    </div>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
